@@ -5,7 +5,7 @@ export function Shot({ name, alt, phone = false, className = "" }: { name: strin
   const [gone, setGone] = useState(false);
   if (gone) return null;
   return (
-    <figure className={`overflow-hidden border border-line bg-panel shadow-2xl shadow-black/60 ${phone ? "rounded-[1.6rem] p-1.5" : "rounded-xl"} ${className}`}>
+    <figure className={`overflow-hidden border border-line bg-panel ${phone ? "rounded-[1.6rem] p-1.5" : ""} ${className}`}>
       <img
         src={`/shots/${name}.webp`}
         alt={alt}

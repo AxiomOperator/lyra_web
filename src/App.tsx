@@ -24,9 +24,10 @@ function ScrollTop() {
 export default function App() {
   return (
     <div className="relative min-h-dvh overflow-x-clip">
-      <div className="grid-bg pointer-events-none absolute inset-x-0 top-0 -z-10 h-[56rem]" aria-hidden />
       <ScrollTop />
       <Nav />
+      {/* The frame: two thin rules down the page, either side of the content. */}
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 z-10 hidden w-full max-w-[60rem] -translate-x-1/2 border-line border-x md:block" aria-hidden />
       <main>
         <Suspense fallback={<div className="mx-auto max-w-6xl px-4 py-32 font-mono text-dim text-sm">loading…</div>}>
           <Routes>

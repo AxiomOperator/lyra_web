@@ -8,7 +8,7 @@ export default function Features() {
   usePage("Features", "What lyra does: chat and agents, memory and skills, plans and goals, your calendar and mail, machines, the app, and teams.");
   return (
     <>
-      <Section eyebrow="features" title="Everything an assistant needs around the model." intro="A raw model endpoint is only a component. lyra is the system around it: memory, procedures, planning, tools, permissions, scheduling, a phone app, and a way to get better over time." />
+      <Section label="features" title={<>Everything an assistant needs <span className="serif-accent text-[1.1em]">around</span> the model.</>} intro="A raw model endpoint is only a component. lyra is the system around it: memory, procedures, planning, tools, permissions, scheduling, a phone app, and a way to get better over time." />
       {/* Jump to a section (sticky on wide screens). */}
       <div className="sticky top-14 z-30 border-line border-y bg-ink/85 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl gap-1 overflow-x-auto px-4 py-2 font-mono text-xs [scrollbar-width:none]">

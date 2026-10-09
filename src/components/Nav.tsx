@@ -13,14 +13,13 @@ export function Nav() {
   const [open, setOpen] = useState(false);
   const { pathname } = useLocation();
   useEffect(() => setOpen(false), [pathname]);
-  const link = ({ isActive }: { isActive: boolean }) => `rounded-md px-3 py-1.5 font-mono text-sm transition-colors ${isActive ? "text-accent" : "text-dim hover:text-text"}`;
+  const link = ({ isActive }: { isActive: boolean }) => `px-3 py-1.5 font-mono text-[13.5px] transition-colors ${isActive ? "text-accent" : "text-text/80 hover:text-text"}`;
   return (
-    <header className="sticky top-0 z-40 border-line border-b bg-ink/75 backdrop-blur-md">
-      <nav className="mx-auto flex h-14 max-w-6xl items-center gap-2 px-4" aria-label="Main">
+    <header className="sticky top-0 z-40 border-line border-b bg-ink/80 backdrop-blur-md">
+      <nav className="mx-auto flex h-14 max-w-[90rem] items-center gap-2 px-4 sm:px-6" aria-label="Main">
         <Link to="/" className="flex items-center gap-2 font-mono font-semibold text-text">
           <img src="/logo.png" alt="" className="size-7 rounded-md" width={28} height={28} />
           lyra
-          <span className="hidden rounded border border-line px-1.5 py-0.5 font-normal text-[10px] text-dim sm:inline">self-hosted</span>
         </Link>
         <div className="ml-auto hidden items-center gap-1 md:flex">
           {LINKS.map((l) => (
@@ -28,8 +27,8 @@ export function Nav() {
               {l.label}
             </NavLink>
           ))}
-          <Link to="/self-host" className="glow ml-2 rounded-md bg-accent/10 px-3 py-1.5 font-mono text-accent text-sm hover:bg-accent/20">
-            $ get lyra
+          <Link to="/self-host" className="ml-3 rounded-[5px] bg-accent px-3.5 py-1.5 font-medium font-mono text-[13px] text-ink hover:bg-accent-2">
+            Get started
           </Link>
         </div>
         <button type="button" className="ml-auto rounded-md p-2 text-dim hover:text-text md:hidden" aria-label={open ? "Close the menu" : "Open the menu"} aria-expanded={open} onClick={() => setOpen(!open)}>

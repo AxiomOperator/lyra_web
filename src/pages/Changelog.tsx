@@ -13,7 +13,7 @@ export default function Changelog() {
   const [only, setOnly] = useState<Kind | null>(null);
   const releases = (changelog as Release[]).filter((r) => !only || (r[only]?.length ?? 0) > 0);
   return (
-    <Section eyebrow="changelog" title="Every release." intro="Versions are major.minor.fix.build: a feature moves the minor number, a fix the third, and every build counts.">
+    <Section label="changelog" title="Every release." intro="Versions are major.minor.fix.build: a feature moves the minor number, a fix the third, and every build counts.">
       <div className="mb-8 flex flex-wrap gap-2 font-mono text-xs">
         <button type="button" onClick={() => setOnly(null)} className={`rounded-md border px-2.5 py-1 ${only === null ? "border-accent/50 text-accent" : "border-line text-dim"}`}>
           all · {changelog.length}

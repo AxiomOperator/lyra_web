@@ -1,6 +1,6 @@
 import { Lock } from "lucide-react";
 import { usePage } from "../components/title";
-import { CodeBlock, Section } from "../components/ui";
+import { Cell, Cells, CodeBlock, Section } from "../components/ui";
 
 const NEEDS = [
   ["A Linux server", "Any machine you control. lyra is one Rust binary; its databases are embedded."],
@@ -18,7 +18,7 @@ const STEPS: { title: string; code: string; note: string }[] = [
 
 /** The pieces and how they connect. */
 function Diagram() {
-  const box = "rounded-lg border border-line bg-panel px-3 py-2 text-center";
+  const box = "border border-line bg-panel px-3 py-2 text-center";
   return (
     <div className="grid gap-3 font-mono text-xs sm:grid-cols-[1fr_auto_1.3fr_auto_1fr] sm:items-center">
       <div className="space-y-2">
@@ -26,7 +26,7 @@ function Diagram() {
         <div className={box}>⌨ terminal client</div>
       </div>
       <div className="text-center text-dim">⇄ https</div>
-      <div className="glow rounded-xl bg-panel p-4 text-center">
+      <div className="border border-accent/40 bg-accent/[0.04] p-4 text-center">
         <div className="text-accent">lyra serve</div>
         <div className="mt-2 text-dim">memory · skills · plans · agents</div>
         <div className="text-dim">policy in Rust · ~/.lyra</div>
@@ -45,20 +45,19 @@ export default function SelfHost() {
   usePage("Self-host", "Run lyra on your own server: what you need, how the pieces fit, and four steps to your first conversation.");
   return (
     <>
-      <Section eyebrow="self-host" title="Run lyra on your own server." intro="lyra is built for one owner and their team on a single machine. No cloud account, no external database: a binary, a model, and a folder.">
-        <div className="grid gap-4 sm:grid-cols-2">
+      <Section label="self-host" title="Run lyra on your own server." intro="lyra is built for one owner and their team on a single machine. No cloud account, no external database: a binary, a model, and a folder.">
+        <Cells cols={2}>
           {NEEDS.map(([t, d]) => (
-            <div key={t} className="rounded-xl border border-line bg-panel p-5">
-              <h3 className="font-medium font-mono text-accent text-sm">{t}</h3>
-              <p className="mt-2 text-dim text-sm leading-relaxed">{d}</p>
-            </div>
+            <Cell key={t} title={t}>
+              {d}
+            </Cell>
           ))}
-        </div>
+        </Cells>
       </Section>
-      <Section eyebrow="how it fits" title="One server in the middle.">
+      <Section id="fits" label="how it fits" title="One server in the middle.">
         <Diagram />
       </Section>
-      <Section eyebrow="install" title="Four steps to your first conversation.">
+      <Section id="install" label="install" title="Four steps to your first conversation.">
         <div className="grid gap-6 lg:grid-cols-2">
           {STEPS.map((s) => (
             <div key={s.title} className="space-y-2">
@@ -67,7 +66,7 @@ export default function SelfHost() {
             </div>
           ))}
         </div>
-        <div className="mt-10 flex flex-wrap items-center gap-4 rounded-xl border border-line bg-panel p-6">
+        <div className="mt-10 flex flex-wrap items-center gap-4 border border-line bg-panel p-6">
           <Lock className="size-5 text-dim" />
           <div className="min-w-0 flex-1">
             <h3 className="font-medium">The source</h3>
